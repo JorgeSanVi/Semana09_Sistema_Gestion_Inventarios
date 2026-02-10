@@ -3,6 +3,7 @@
 
 from modelos.producto import Producto
 
+
 class Inventario:
     def __init__(self):
         self.productos = []  # Lista principal de almacenamiento
@@ -49,4 +50,8 @@ class Inventario:
 
     # Mostrar todos los productos
     def mostrar_inventario(self):
-        if not self.produ
+        if not self.productos:
+            print("El inventario está vacío.")
+        else:
+            for p in self.productos:
+                print(p)
