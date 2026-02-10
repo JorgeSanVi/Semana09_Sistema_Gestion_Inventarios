@@ -1,41 +1,42 @@
-# Sistema de Gestión de Inventarios (Consola)
-# Punto de inicio del programa
+# Archivo principal del sistema de gestión de inventarios
+# Aquí se muestra el menú y se controla la interacción con el usuario
 
 from modelos.producto import Producto
 from servicios.inventario import Inventario
 
 
+# Función para leer números enteros y validar la entrada
 def leer_entero(mensaje):
-    """Lee un número entero validando la entrada."""
     while True:
         try:
             valor = int(input(mensaje))
             if valor < 0:
-                print("Error: no se permiten valores negativos.")
+                print("No se permiten valores negativos.")
             else:
                 return valor
         except ValueError:
-            print("Error: ingresa un número entero válido.")
+            print("Ingrese un número entero válido.")
 
 
+# Función para leer números decimales y validar la entrada
 def leer_flotante(mensaje):
-    """Lee un número decimal validando la entrada."""
     while True:
         try:
             valor = float(input(mensaje))
             if valor < 0:
-                print("Error: no se permiten valores negativos.")
+                print("No se permiten valores negativos.")
             else:
                 return valor
         except ValueError:
-            print("Error: ingresa un número válido (ej: 2.50).")
+            print("Ingrese un número válido.")
 
 
+# Función principal que muestra el menú del sistema
 def menu():
     inventario = Inventario()
 
     while True:
-        print("\n--- MENÚ INVENTARIO ---")
+        print("\n--- MENÚ DEL INVENTARIO ---")
         print("1. Añadir producto")
         print("2. Eliminar producto")
         print("3. Actualizar producto")
@@ -43,12 +44,12 @@ def menu():
         print("5. Listar inventario")
         print("6. Salir")
 
-        opcion = input("Elige una opción (1-6): ").strip()
+        opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            print("\n--- Añadir producto ---")
-            id_producto = input("ID (único): ").strip()
-            nombre = input("Nombre: ").strip()
+            # Opción para añadir un producto
+            id_producto = input("ID del producto: ")
+            nombre = input("Nombre del producto: ")
             cantidad = leer_entero("Cantidad: ")
             precio = leer_flotante("Precio: ")
 
@@ -56,53 +57,50 @@ def menu():
             inventario.agregar_producto(producto)
 
         elif opcion == "2":
-            print("\n--- Eliminar producto ---")
-            id_producto = input("Ingresa el ID del producto a eliminar: ").strip()
+            # Opción para eliminar un producto
+            id_producto = input("Ingrese el ID del producto a eliminar: ")
             inventario.eliminar_producto(id_producto)
 
         elif opcion == "3":
-            print("\n--- Actualizar producto ---")
-            id_producto = input("Ingresa el ID del producto a actualizar: ").strip()
+            # Opción para actualizar un producto
+            id_producto = input("Ingrese el ID del producto a actualizar: ")
+            print("1. Actualizar cantidad")
+            print("2. Actualizar precio")
+            print("3. Actualizar cantidad y precio")
 
-            print("¿Qué deseas actualizar?")
-            print("1. Cantidad")
-            print("2. Precio")
-            print("3. Cantidad y precio")
-
-            sub_op = input("Elige una opción (1-3): ").strip()
+            sub_op = input("Seleccione una opción: ")
 
             if sub_op == "1":
-                nueva_cantidad = leer_entero("Nueva cantidad: ")
-                inventario.actualizar_producto(id_producto, cantidad=nueva_cantidad)
-
+                cantidad = leer_entero("Nueva cantidad: ")
+                inventario.actualizar_producto(id_producto, cantidad=cantidad)
             elif sub_op == "2":
-                nuevo_precio = leer_flotante("Nuevo precio: ")
-                inventario.actualizar_producto(id_producto, precio=nuevo_precio)
-
+                precio = leer_flotante("Nuevo precio: ")
+                inventario.actualizar_producto(id_producto, precio=precio)
             elif sub_op == "3":
-                nueva_cantidad = leer_entero("Nueva cantidad: ")
-                nuevo_precio = leer_flotante("Nuevo precio: ")
-                inventario.actualizar_producto(id_producto, cantidad=nueva_cantidad, precio=nuevo_precio)
-
+                cantidad = leer_entero("Nueva cantidad: ")
+                precio = leer_flotante("Nuevo precio: ")
+                inventario.actualizar_producto(id_producto, cantidad=cantidad, precio=precio)
             else:
-                print("Opción inválida en actualización.")
+                print("Opción inválida.")
 
         elif opcion == "4":
-            print("\n--- Buscar producto ---")
-            nombre = input("Ingresa el nombre o parte del nombre: ").strip()
+            # Opción para buscar productos por nombre
+            nombre = input("Ingrese el nombre a buscar: ")
             inventario.buscar_producto(nombre)
 
         elif opcion == "5":
-            print("\n--- Listar inventario ---")
+            # Opción para listar todos los productos
             inventario.mostrar_inventario()
 
         elif opcion == "6":
-            print("Saliendo del sistema... ¡Listo!")
+            # Opción para salir del sistema
+            print("Saliendo del sistema...")
             break
 
         else:
-            print("Opción inválida. Intenta de nuevo.")
+            print("Opción inválida, intente nuevamente.")
 
 
+# Punto de inicio del programa
 if __name__ == "__main__":
     menu()
