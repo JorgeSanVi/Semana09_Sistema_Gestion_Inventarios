@@ -1,36 +1,27 @@
-# Semana09_Sistema_Gestion_Inventarios
-📦 Sistema de Gestión de Inventarios – Semana 09
+Sistema de Gestión de Inventarios – Semana 09
 
-Este proyecto corresponde a la Semana 09 de la materia Programación Orientada a Objetos.
-El objetivo fue desarrollar un sistema simple de gestión de inventarios utilizando Python y aplicando el uso de clases.
+En esta tarea desarrollé un sistema de gestión de inventarios utilizando Python y Programación Orientada a Objetos. El sistema funciona en consola y permite administrar productos de una tienda de manera sencilla.
 
-El sistema permite:
+El programa permite:
 
-Añadir productos al inventario
+Añadir productos con ID, nombre, cantidad y precio.
 
-Eliminar productos por su ID
+Eliminar productos por su ID.
 
-Actualizar la cantidad o el precio de un producto
+Actualizar la cantidad o el precio de un producto.
 
-Buscar productos por nombre o parte del nombre
+Buscar productos por nombre, incluso con coincidencias parciales.
 
-Mostrar todos los productos registrados
+Listar todos los productos registrados en el inventario.
 
-Todo el funcionamiento se realiza mediante un menú interactivo en consola.
-📁 Estructura del proyecto
-Semana09_Sistema_Gestion_Inventarios/
-│
-├── modelos/
-│   └── producto.py
-│
-├── servicios/
-│   └── inventario.py
-│
-├── main.py
-└── README.md
-▶️ Cómo ejecutar el programa
+El proyecto está organizado de forma modular:
 
-Para ejecutar el sistema, se debe abrir la carpeta del proyecto y ejecutar el siguiente comando en la terminal:
-python main.py
-El programa fue probado correctamente y todas las opciones del menú funcionan de forma adecuada.
-El proyecto se desarrolló siguiendo lo visto en clase y fue subido a GitHub cumpliendo con la estructura solicitada.
+La carpeta modelos contiene la clase Producto.
+
+La carpeta servicios contiene la lógica del inventario.
+
+El archivo main.py ejecuta el menú principal del sistema.
+
+Durante el desarrollo validé los datos ingresados por el usuario para evitar errores y comprobé el correcto funcionamiento de todas las opciones del menú.
+
+Además, utilicé un archivo .gitignore para evitar subir archivos temporales de Python y mantener el repositorio ordenado.
