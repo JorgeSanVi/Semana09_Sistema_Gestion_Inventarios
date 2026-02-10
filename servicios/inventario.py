@@ -1,14 +1,17 @@
 # Clase Inventario
-# Gestiona la lista de productos
+# Esta clase se encarga de gestionar todos los productos del sistema.
+# Utiliza una lista como estructura principal de almacenamiento.
 
 from modelos.producto import Producto
 
 
 class Inventario:
     def __init__(self):
-        self.productos = []  # Lista principal de almacenamiento
+        # Lista donde se almacenan los productos del inventario
+        self.productos = []
 
-    # Añadir producto (validar ID único)
+    # Método para agregar un nuevo producto
+    # Se valida que el ID no esté repetido
     def agregar_producto(self, producto):
         for p in self.productos:
             if p.get_id_producto() == producto.get_id_producto():
@@ -17,7 +20,7 @@ class Inventario:
         self.productos.append(producto)
         print("Producto agregado correctamente.")
 
-    # Eliminar producto por ID
+    # Método para eliminar un producto usando su ID
     def eliminar_producto(self, id_producto):
         for p in self.productos:
             if p.get_id_producto() == id_producto:
@@ -26,7 +29,7 @@ class Inventario:
                 return
         print("Error: Producto no encontrado.")
 
-    # Actualizar cantidad o precio por ID
+    # Método para actualizar la cantidad o el precio de un producto
     def actualizar_producto(self, id_producto, cantidad=None, precio=None):
         for p in self.productos:
             if p.get_id_producto() == id_producto:
@@ -38,17 +41,18 @@ class Inventario:
                 return
         print("Error: Producto no encontrado.")
 
-    # Buscar productos por nombre (coincidencia parcial)
+    # Método para buscar productos por nombre
+    # Permite coincidencias parciales
     def buscar_producto(self, nombre):
-        encontrados = False
+        encontrado = False
         for p in self.productos:
             if nombre.lower() in p.get_nombre().lower():
                 print(p)
-                encontrados = True
-        if not encontrados:
+                encontrado = True
+        if not encontrado:
             print("No se encontraron productos con ese nombre.")
 
-    # Mostrar todos los productos
+    # Método para mostrar todos los productos del inventario
     def mostrar_inventario(self):
         if not self.productos:
             print("El inventario está vacío.")
