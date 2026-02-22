@@ -1,19 +1,20 @@
-# Clase Producto
-# Esta clase representa a un producto dentro del inventario.
-# Aquí se definen sus datos principales y los métodos para acceder y modificarlos.
+# modelos/producto.py
+# ------------------------------------------------------------
+# Clase Producto:
+# Representa un producto dentro del inventario.
+# Guarda: id, nombre, cantidad y precio.
+# Incluye getters/setters y una forma bonita de mostrar el producto.
+# ------------------------------------------------------------
 
 class Producto:
     def __init__(self, id_producto, nombre, cantidad, precio):
-        # Constructor de la clase Producto
-        # Inicializa los atributos del producto
+        # Atributos privados (encapsulación)
         self.__id_producto = id_producto
         self.__nombre = nombre
         self.__cantidad = cantidad
         self.__precio = precio
 
-    # ===== Getters =====
-    # Permiten obtener los valores de los atributos
-
+    # ===== Getters (obtener valores) =====
     def get_id_producto(self):
         return self.__id_producto
 
@@ -26,9 +27,7 @@ class Producto:
     def get_precio(self):
         return self.__precio
 
-    # ===== Setters =====
-    # Permiten modificar los valores de los atributos
-
+    # ===== Setters (modificar valores) =====
     def set_id_producto(self, id_producto):
         self.__id_producto = id_producto
 
@@ -41,7 +40,7 @@ class Producto:
     def set_precio(self, precio):
         self.__precio = precio
 
-    # Método para mostrar la información del producto de forma legible
+    # Mostrar el producto de forma clara en consola
     def __str__(self):
         return (
             f"ID: {self.__id_producto} | "
@@ -49,3 +48,4 @@ class Producto:
             f"Cantidad: {self.__cantidad} | "
             f"Precio: ${self.__precio}"
         )
+        
